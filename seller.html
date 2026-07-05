@@ -419,6 +419,7 @@ document.getElementById("product-image-file").addEventListener("change", (e) => 
       const discount = document.getElementById("product-discount").value;
       const categoryId = document.getElementById("product-category").value;
       const description = document.getElementById("product-description").value;
+     const stock = document.getElementById("product-stock").value;
 
       if (!price) price = originalPrice;
       if (!name.trim() || !originalPrice || !categoryId) return;
@@ -445,6 +446,7 @@ document.getElementById("product-image-file").addEventListener("change", (e) => 
         categoryId: Number(categoryId),
         images,
         description
+        stock: stock !== "" ? Number(stock) : null,
       });
 
       form.reset();
