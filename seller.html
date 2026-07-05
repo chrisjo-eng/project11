@@ -76,14 +76,21 @@
             <span class="hint">Don't see the right one? Add it in the Categories tab first.</span>
           </div>
 
+       <div class="form-row">
+            <label for="product-image-file">Product Photo</label>
+           <input type="file" id="product-image-file" accept="image/*" multiple>
+            <div id="image-preview" class="image-preview"></div>
+          </div>
+
           <div class="form-row">
             <label for="product-description">Description <span class="optional">(optional)</span></label>
-            <textarea id="product-description" rows="3" placeholder="Short description customers will see..."></textarea>
+            <textarea id="product-descrin" rows="3" placeholder="Short description customers will see..."></textarea>
           </div>
 
           <button type="submit" class="btn-primary" id="add-product-btn">Add Product</button>
           <p id="form-success" class="contact-success"></p>
         </form>
+
 
           <<!-- ===== Top Navigation ===== -->
   <div class="site-header">
