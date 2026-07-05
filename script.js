@@ -115,7 +115,7 @@ async function getProductById(id) {
   return data;
 }
 
-async function addProduct({ name, price, originalPrice, discountPercent, category, categoryId, images, description }) {
+async function addProduct({ name, price, originalPrice, discountPercent, category, categoryId, stock, images, description }) {
   const { error } = await supabaseClient.from("products").insert({
     name: name.trim(),
     price: Number(price),
@@ -123,6 +123,7 @@ async function addProduct({ name, price, originalPrice, discountPercent, categor
     discount_percent: Number(discountPercent) || 0,
     category: category.trim() || "Uncategorized",
     category_id: categoryId || null,
+     stock: stock === null || stock === undefined ? null : Number(stock),
     image_url: images && images.length ? images[0] : null,
     images: images || [],
     description: description ? description.trim() : null
