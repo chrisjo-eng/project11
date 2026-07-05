@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seller Dashboard — Sarah Fashions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== Login Gate ===== -->
+  <div id="login-screen" class="login-screen">
+    <div class="login-box">
+      <a href="index.html" class="logo">Sarah <span>Fashions</span></a>
+      <p class="login-sub">Seller Dashboard</p>
+      <input type="password" id="password-input" placeholder="Enter password" autofocus>
+      <button id="login-btn" class="btn-primary full-width">Unlock Dashboard</button>
+      <p id="login-error" class="login-error"></p>
+      <a href="index.html" class="back-link">&larr; Back to storefront</a>
+    </div>
+  </div>
+
+  <!-- ===== Dashboard (hidden until unlocked) ===== -->
+  <div id="dashboard" class="dashboard-wrapper hidden">
+
+    <aside class="dashboard-sidebar">
+      <div class="logo">Sarah <span>Fashions</span></div>
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-link active" data-tab="products-tab">Add Product</a>
+        <a href="#" class="nav-link" data-tab="categories-tab">Categories</a>
+        <a href="#" class="nav-link" data-tab="messages-tab">Messages</a>
+        <a href="#" class="nav-link" data-tab="settings-tab">Settings</a>
+        <a href="index.html">View Storefront</a>
+        <a href="#" id="logout-link">Log Out</a>
+      </nav>
+    </aside>
+
+    <main class="dashboard-main">
+
+      <!-- ===== TAB: Add Product ===== -->
+      <div id="products-tab" class="tab-panel">
+        <header class="dashboard-header">
+          <h1>Add a Product</h1>
+          <p>New products appear on the storefront instantly, styled to match the site.</p>
+        </header>
+
+        <form id="add-product-form" class="product-form">
+          <div class="form-row">
+            <label for="product-name">Product Name</label>
+            <input type="text" id="product-name" placeholder="e.g. Ankara Print Dress" required>
+          </div>
+
+          <div class="form-row">
+  <label for="product-original-price">Original Price (KSh)</label>
+  <input type="number" id="product-original-price" placeholder="e.g. 2000" min="0" required>
+</div>
+
+<div class="form-row price-discount-row">
+  <div>
+    <label for="product-discount">Discount %</label>
+    <input type="number" id="product-discount" placeholder="e.g. 20" min="0" max="100">
+  </div>
+  <div>
+    <label for="product-price">Sale Price (KSh)</label>
+    <input type="number" id="product-price" placeholder="e.g. 1600" min="0">
+  </div>
+</div>
+
+          <div class="form-row">
+            <label for="product-category">Category</label>
+            <select id="product-category" required>
+              <option value="" disabled selected>Choose a category</option>
+            </select>
+            <span class="hint">Don't see the right one? Add it in the Categories tab first.</span>
+          </div>
+
+          <div class="form-row">
+            <label for="product-image-file">Product Photo</label>
+           <input type="file" id="product-image-file" accept="image/*" multiple>
+            <div id="image-preview" class="image-preview"></div>
+          </div>
+
+          <div class="form-row">
+            <label for="product-description">Description <span class="optional">(optional)</span></label>
+            <textarea id="product-description" rows="3" placeholder="Short description customers will see..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary" id="add-product-btn">Add Product</button>
+          <p id="form-success" class="contact-success"></p>
+        </form>
+
+        <section class="preview-section">
+          <h2>Your Products</h2>
+          <div id="category-pills" class="category-pills"></div>
+          <div id="seller-product-grid" class="sf-product-grid"></div>
+          <p id="empty-state" class="empty-state">You haven't added any products yet.</p>
+       </section>
+      </div>
+
+      <!-- ===== TAB: Categories ===== -->
+      <div id="categories-tab" class="tab-panel hidden">
+        <header class="dashboard-header">
+          <h1>Categories</h1>
+          <p>Build your category tree — add top-level categories, or nest new ones under an existing one to create sub-categories.</p>
+        </header>
+
+        <form id="add-category-form" class="product-form">
+          <div class="form-row">
+            <label for="category-name">New Category Name</label>
+            <input type="text" id="category-name" placeholder="e.g. Bluetooth Speakers">
+          </div>
+          <div class="form-row">
+            <label for="category-parent">Parent Category</label>
+            <select id="category-parent">
+              <option value="">None — top-level category</option>
+            </select>
+            <span class="hint">Leave as "None" to create a main category, or pick one to nest under it.</span>
+          </div>
+          <button type="submit" class="btn-primary">Add Category</button>
+          <p id="category-success" class="contact-success"></p>
+        </form>
+
+        <section class="preview-section">
+          <h2>Category Tree</h2>
+          <p class="hint" style="display:block; margin-bottom: 12px;">Deleting a category also deletes everything nested inside it.</p>
+          <div id="category-list" class="category-list"></div>
+        </section>
+      </div>
+
+      
+
+
+      <!-- ===== TAB: Messages ===== -->
+      <div id="messages-tab" class="tab-panel hidden">
+        <header class="dashboard-header">
+          <h1>Customer Messages</h1>
+          <p>Enquiries from the contact form and cart requests land here.</p>
+        </header>
+
+        <div id="message-list" class="message-list"></div>
+        <p id="empty-messages" class="empty-state">No messages yet.</p>
+      </div>
+
+      <!-- ===== TAB: Settings ===== -->
+      <div id="settings-tab" class="tab-panel hidden">
+        <header class="dashboard-header">
+          <h1>Settings</h1>
+          <p>Change your dashboard password here — no code editing needed.</p>
+        </header>
+
+        <form id="change-password-form" class="product-form">
+          <div class="form-row">
+            <label for="current-password">Current Password</label>
+            <input type="password" id="current-password" required>
+          </div>
+          <div class="form-row">
+            <label for="new-password">New Password</label>
+            <input type="password" id="new-password" required minlength="4">
+          </div>
+          <button type="submit" class="btn-primary">Update Password</button>
+          <p id="password-success" class="contact-success"></p>
+          <p id="password-error" class="login-error"></p>
+        </form>
+        <h2 style="margin: 30px 0 16px; font-size: 17px;">Business Hours</h2>
+<form id="schedule-form" class="product-form">
+  <div class="form-row">
+    <label for="open-time">Opening Time</label>
+    <input type="time" id="open-time" required>
+  </div>
+  <div class="form-row">
+    <label for="close-time">Closing Time</label>
+    <input type="time" id="close-time" required>
+  </div>
+  <div class="form-row">
+    <label>
+      <input type="checkbox" id="manual-closed-toggle" style="width: auto; margin-right: 8px;">
+      Mark shop as closed right now (holiday, emergency, etc.)
+    </label>
+  </div>
+  <button type="submit" class="btn-primary">Save Hours</button>
+  <p id="schedule-success" class="contact-success"></p>
+</form>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
+  <script>
+    const loginScreen = document.getElementById("login-screen");
+    const dashboard = document.getElementById("dashboard");
+    const passwordInput = document.getElementById("password-input");
+    const loginBtn = document.getElementById("login-btn");
+    const loginError = document.getElementById("login-error");
+
+    function unlock() {
+      loginScreen.classList.add("hidden");
+      dashboard.classList.remove("hidden");
+     refreshDashboard();
+     loadScheduleIntoForm();
+    }
+
+    async function attemptLogin() {
+      loginBtn.textContent = "Checking...";
+      const success = await trySellerLogin(passwordInput.value);
+      loginBtn.textContent = "Unlock Dashboard";
+      if (success) {
+        unlock();
+      } else {
+        loginError.textContent = "Incorrect password. Try again.";
+        passwordInput.value = "";
+        passwordInput.focus();
+      }
+    }
+
+    loginBtn.addEventListener("click", attemptLogin);
+    passwordInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") attemptLogin();
+    });
+
+    document.getElementById("logout-link").addEventListener("click", (e) => {
+      e.preventDefault();
+      sellerLogout();
+      window.location.reload();
+    });
+
+    if (isSellerAuthed()) unlock();
+
+    /* ---------------- Tab switching ---------------- */
+    document.querySelectorAll(".nav-link").forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        document.querySelectorAll(".nav-link").forEach((l) => l.classList.remove("active"));
+        link.classList.add("active");
+
+        document.querySelectorAll(".tab-panel").forEach((panel) => panel.classList.add("hidden"));
+        document.getElementById(link.dataset.tab).classList.remove("hidden");
+      });
+    });
+
+    /* ---------------- Shared state ---------------- */
+    const productGrid = document.getElementById("seller-product-grid");
+    const emptyState = document.getElementById("empty-state");
+    const messageList = document.getElementById("message-list");
+    const emptyMessages = document.getElementById("empty-messages");
+    const categoryPills = document.getElementById("category-pills");
+    const categorySelect = document.getElementById("product-category");
+    const categoryList = document.getElementById("category-list");
+    const form = document.getElementById("add-product-form");
+    const successMsg = document.getElementById("form-success");
+
+    let activeDashboardCategory = "All";
+    let selectedImageFiles = [];
+
+    /* Live price/discount calculation */
+const originalPriceInput = document.getElementById("product-original-price");
+const discountInput = document.getElementById("product-discount");
+const salePriceInput = document.getElementById("product-price");
+
+discountInput.addEventListener("input", () => {
+  const original = Number(originalPriceInput.value);
+  const discount = Number(discountInput.value);
+  if (original && discount >= 0) {
+    salePriceInput.value = Math.round(original - (original * discount) / 100);
+  }
+});
+
+salePriceInput.addEventListener("input", () => {
+  const original = Number(originalPriceInput.value);
+  const sale = Number(salePriceInput.value);
+  if (original && sale >= 0) {
+    discountInput.value = Math.round(((original - sale) / original) * 100);
+  }
+});
+
+    /* Image preview */
+    /* Image preview (multiple) */
+document.getElementById("product-image-file").addEventListener("change", (e) => {
+  selectedImageFiles = Array.from(e.target.files);
+  const preview = document.getElementById("image-preview");
+  preview.innerHTML = "";
+  selectedImageFiles.forEach((file) => {
+    const img = document.createElement("img");
+    img.src = URL.createObjectURL(file);
+    preview.appendChild(img);
+  });
+});
+
+    /* ---------------- Main refresh ---------------- */
+    async function refreshDashboard() {
+      const [allProducts, categories] = await Promise.all([getProducts(), getCategories()]);
+
+    // Build the category tree and a flattened, indented version for dropdowns/lists
+      const categoryTree = buildCategoryTree(categories);
+      const flatCategories = flattenCategoryTree(categoryTree);
+
+      // Populate category <select> in the Add Product form (shows nested path)
+      categorySelect.innerHTML = '<option value="" disabled selected>Choose a category</option>';
+      flatCategories.forEach((cat) => {
+        const opt = document.createElement("option");
+        opt.value = cat.id;
+        opt.textContent = "— ".repeat(cat.depth) + cat.name;
+        opt.title = cat.path;
+        categorySelect.appendChild(opt);
+      });
+
+      // Populate the "Parent Category" select in the Categories tab
+      const parentSelect = document.getElementById("category-parent");
+      const currentParentValue = parentSelect.value;
+      parentSelect.innerHTML = '<option value="">None — top-level category</option>';
+      flatCategories.forEach((cat) => {
+        const opt = document.createElement("option");
+        opt.value = cat.id;
+        opt.textContent = "— ".repeat(cat.depth) + cat.name;
+        parentSelect.appendChild(opt);
+      });
+      parentSelect.value = currentParentValue;
+
+      // Category filter pills for "Your Products"
+      const products =
+        activeDashboardCategory === "All"
+          ? allProducts
+          : allProducts.filter((p) => p.category === activeDashboardCategory);
+
+      productGrid.innerHTML = "";
+      products.forEach((product) => {
+        const card = buildProductCard(product);
+        const delBtn = document.createElement("button");
+        delBtn.className = "delete-btn";
+        delBtn.textContent = "Remove";
+        delBtn.addEventListener("click", async () => {
+          await deleteProduct(product.id);
+          refreshDashboard();
+        });
+        card.appendChild(delBtn);
+        productGrid.appendChild(card);
+      });
+      emptyState.style.display = products.length ? "none" : "block";
+
+      categoryPills.innerHTML = "";
+      ["All", ...categories.map((c) => c.name)].forEach((cat) => {
+        const pill = document.createElement("button");
+        pill.className = "sf-category-pill";
+        pill.type = "button";
+        pill.textContent = cat;
+        if (cat === activeDashboardCategory) pill.classList.add("active");
+        pill.addEventListener("click", () => {
+          activeDashboardCategory = cat;
+          refreshDashboard();
+        });
+        categoryPills.appendChild(pill);
+      });
+
+      // Categories tab list — rendered as an indented tree
+      categoryList.innerHTML = "";
+      flatCategories.forEach((cat) => {
+        const row = document.createElement("div");
+        row.className = "category-row";
+        row.style.paddingLeft = `${16 + cat.depth * 20}px`;
+        row.innerHTML = `<span>${cat.depth > 0 ? "↳ " : ""}${cat.name}</span>`;
+        const delBtn = document.createElement("button");
+        delBtn.className = "delete-btn small";
+        delBtn.textContent = "Delete";
+        delBtn.addEventListener("click", async () => {
+          await deleteCategory(cat.id);
+          refreshDashboard();
+        });
+        row.appendChild(delBtn);
+        categoryList.appendChild(row);
+      });
+      // Messages
+      const messages = await getMessages();
+      messageList.innerHTML = "";
+      messages.forEach((m) => {
+        const item = document.createElement("div");
+        item.className = "message-item";
+        item.innerHTML = `
+          <div class="message-top">
+            <strong>${m.name}</strong>
+            <span class="message-date">${new Date(m.created_at).toLocaleString()}</span>
+          </div>
+          <p class="message-product">Re: ${m.product}</p>
+          <p class="message-body">${m.message.replace(/\n/g, "<br>")}</p>
+          <p class="message-phone">&#128222; ${m.phone}</p>
+        `;
+        const delBtn = document.createElement("button");
+        delBtn.className = "delete-btn";
+        delBtn.textContent = "Delete";
+        delBtn.addEventListener("click", async () => {
+          await deleteMessage(m.id);
+          refreshDashboard();
+        });
+        item.appendChild(delBtn);
+        messageList.appendChild(item);
+      });
+      emptyMessages.style.display = messages.length ? "none" : "block";
+    }
+
+    /* ---------------- Add Product ---------------- */
+   form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("product-name").value;
+      const originalPrice = document.getElementById("product-original-price").value;
+      let price = document.getElementById("product-price").value;
+      const discount = document.getElementById("product-discount").value;
+      const categoryId = document.getElementById("product-category").value;
+      const description = document.getElementById("product-description").value;
+
+      if (!price) price = originalPrice;
+      if (!name.trim() || !originalPrice || !categoryId) return;
+
+      const addBtn = document.getElementById("add-product-btn");
+      addBtn.textContent = "Adding...";
+      addBtn.disabled = true;
+
+      let images = [];
+      if (selectedImageFiles.length) {
+        images = await uploadProductImages(selectedImageFiles);
+      }
+
+      const allCategories = await getCategories();
+      const matchedCategory = allCategories.find((c) => c.id === Number(categoryId));
+      const categoryName = matchedCategory ? matchedCategory.name : "Uncategorized";
+
+      await addProduct({
+        name,
+        price,
+        originalPrice,
+        discountPercent: discount || 0,
+        category: categoryName,
+        categoryId: Number(categoryId),
+        images,
+        description
+      });
+
+      form.reset();
+      document.getElementById("image-preview").innerHTML = "";
+      selectedImageFiles = [];
+      addBtn.textContent = "Add Product";
+      addBtn.disabled = false;
+
+      await refreshDashboard();
+      successMsg.textContent = "Product added successfully!";
+      setTimeout(() => (successMsg.textContent = ""), 2200);
+    });
+
+    /* ---------------- Add Category ---------------- */
+    document.getElementById("add-category-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const input = document.getElementById("category-name");
+      const parentSelect = document.getElementById("category-parent");
+      const parentId = parentSelect.value ? Number(parentSelect.value) : null;
+      const result = await addCategory(input.value, parentId);
+      const successEl = document.getElementById("category-success");
+
+      if (result.error) {
+        successEl.style.color = "#ff6b62";
+        successEl.textContent = result.error;
+      } else {
+        successEl.style.color = "";
+        successEl.textContent = "Category added!";
+        input.value = "";
+        parentSelect.value = "";
+        await refreshDashboard();
+      }
+      setTimeout(() => (successEl.textContent = ""), 2200);
+    });
+
+    /* ---------------- Change Password ---------------- */
+    document.getElementById("change-password-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const current = document.getElementById("current-password").value;
+      const next = document.getElementById("new-password").value;
+
+      const successEl = document.getElementById("password-success");
+      const errorEl = document.getElementById("password-error");
+      successEl.textContent = "";
+      errorEl.textContent = "";
+
+      const result = await changeSellerPassword(current, next);
+      if (result.error) {
+        errorEl.textContent = result.error;
+      } else {
+        successEl.textContent = "Password updated!";
+        e.target.reset();
+      }
+    });
+    async function loadScheduleIntoForm() {
+  const schedule = await getStoreSchedule();
+  document.getElementById("open-time").value = schedule.open_time.slice(0, 5);
+  document.getElementById("close-time").value = schedule.close_time.slice(0, 5);
+  document.getElementById("manual-closed-toggle").checked = schedule.is_closed;
+}
+
+document.getElementById("schedule-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const openTime = document.getElementById("open-time").value;
+  const closeTime = document.getElementById("close-time").value;
+  const isClosed = document.getElementById("manual-closed-toggle").checked;
+
+  const result = await updateStoreSchedule({ openTime, closeTime, isClosed });
+  const successEl = document.getElementById("schedule-success");
+  successEl.textContent = result.error ? result.error : "Business hours saved!";
+  setTimeout(() => (successEl.textContent = ""), 2200);
+});
+  </script>
+
+</body>
+</html>

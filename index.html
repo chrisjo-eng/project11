@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sarah Fashions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== Top Navigation ===== -->
+   <div class="site-header"></div>
+  <header class="navbar">
+    <div class="site-header"></div>
+    <a href="index.html" class="logo">Sarah <span>Fashions</span></a>
+    
+    <div class="category-menu-wrapper">
+      <button id="category-menu-btn" class="category-menu-btn">&#9776; Categories</button>
+      <div id="category-menu-panel" class="category-menu-panel"></div>
+    </div>
+    
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="I'm looking for...">
+      <button id="search-btn" aria-label="Search">&#128269;</button>
+    </div>
+
+    <div class="status-pill">
+      <span class="dot green"></span> Open Now &middot; 7am &ndash; 8pm
+    </div>
+
+    <div class="nav-right">
+      <button class="cart-btn" onclick="openCartModal()">
+       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        <span id="cart-count" class="cart-count">0</span>
+      </button>
+      <a href="seller.html" class="seller-btn"> Seller</a>
+    </div>
+</header>
+
+    <div class="ticker-bar">
+      <div class="ticker-track">
+       <span class="ticker-item">💳 M-Pesa: 0701227713</span>
+        <span class="ticker-item">📍 Meru Nkubu, Kenya</span>
+        <span class="ticker-item">🕐 Open 7am&ndash;8pm</span>
+        <span class="ticker-item">📞 WhatsApp: 0701227713</span>
+        <span class="ticker-item">✦ New arrivals daily</span>
+        <span class="ticker-item">🚚 Nationwide Delivery &mdash; fee confirmed by seller</span>
+        <span class="ticker-item">💳 M-Pesa: 0701227713</span>
+        <span class="ticker-item">📍 Meru Nkubu, Kenya</span>
+        <span class="ticker-item">🕐 Open 7am&ndash;8pm</span>
+        <span class="ticker-item">📞 WhatsApp: 0701227713</span>
+        <span class="ticker-item">✦ New arrivals daily</span>
+        <span class="ticker-item">🚚 Nationwide Delivery &mdash; fee confirmed by seller</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===== Shop Section ===== -->
+  <section id="shop" class="shop-section">
+   
+    
+
+    <div id="product-grid" class="sf-product-grid"></div>
+    <p id="empty-state" class="empty-state">No products yet — check back soon!</p>
+  </section>
+
+  
+  <!-- ===== Info Cards ===== -->
+  <section class="info-cards-section">
+    <div class="info-card">
+      <div class="info-icon">💳</div>
+      <h3>Payment</h3>
+      <p>✓ M-Pesa</p>
+      <p>✓ Cash on Delivery</p>
+      <p>✓ Bank Transfer</p>
+      <p class="info-highlight">M-Pesa: 0701227713</p>
+    </div>
+
+    <div class="info-card">
+      <div class="info-icon">🚚</div>
+      <h3>Delivery</h3>
+      <p>✓ Nationwide</p>
+      <p>✓ 2–5 Business Days</p>
+      <p>✓ Doorstep Delivery</p>
+      <p class="info-highlight">Fee confirmed by seller per location</p>
+    </div>
+
+    <div class="info-card">
+      <div class="info-icon">🔒</div>
+      <h3>Secure Shopping</h3>
+      <p>✓ Verified M-Pesa Payments</p>
+      <p>✓ Order Confirmation Call</p>
+      <p>✓ Your Data Protected</p>
+      <p class="info-highlight">Shop with full confidence</p>
+    </div>
+
+    <div class="info-card">
+      <div class="info-icon">📞</div>
+      <h3>Contact Us</h3>
+      <p>✓ 0701227713</p>
+      <p>✓ Call or WhatsApp</p>
+      <p>✓ Meru Nkubu, Kenya</p>
+      <p class="info-highlight">Open 7am–8pm daily</p>
+    </div>
+  </section>
+
+  <!-- ===== About Section ===== -->
+  <section id="about" class="about-section">
+    <div class="about-text">
+      <h2>About Sarah Fashions</h2>
+      <p>Nestled in the heart of <strong>Meru Nkubu</strong>, Sarah Fashions is your go-to destination for quality clothes, shoes, and accessories for the whole family — men, women, and children.</p>
+      <p>From casual everyday wear to elegant evening pieces, our collection keeps you looking your best without breaking the bank.</p>
+      <div class="about-info">
+        <span>📍 Meru Nkubu, Kenya</span>
+        <span>📞 0701227713</span>
+        <span>🚚 Nationwide Delivery — fee confirmed by seller</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">Sarah <span>Fashions</span></div>
+        <p>Meru Nkubu's Premier Fashion Destination</p>
+      </div>
+      <div class="footer-links">
+        <a href="#shop">Shop</a>
+        <a href="#about">About</a>
+        <a href="tel:0701227713">0701227713</a>
+        <span>Meru Nkubu, Kenya</span>
+      </div>
+    </div>
+    <hr>
+    <p class="footer-copyright">&copy; 2026 Sarah Fashions &middot; Meru Nkubu, Kenya &middot; All rights reserved.</p>
+  </footer>
+
+  <!-- ===== Product Detail Modal ===== -->
+ <!-- ===== Product Detail Page (full-screen) ===== -->
+  <div id="product-modal" class="pd-overlay">
+    <div class="pd-page">
+      <button class="pd-back" onclick="closeProductModal()">&larr; Back</button>
+
+      <div class="pd-top">
+        <div class="pd-gallery">
+          <div id="pd-main-image" class="pd-main-image"></div>
+          <div id="pd-thumbnails" class="pd-thumbnails"></div>
+        </div>
+
+  <div class="pd-info">
+          <span id="product-modal-category" class="sf-product-category"></span>
+          <h2 id="product-modal-name" class="pd-name"></h2>
+
+          <div id="product-modal-price-row" class="pd-price-box"></div>
+
+          <div class="pd-delivery-row">
+            <span>🚚</span>
+            <span>Ships from Meru Nkubu &middot; Nationwide Delivery, fee confirmed by seller</span>
+          </div>
+
+          <div class="pd-qty-row">
+            <span>Quantity:</span>
+            <div class="pd-qty-stepper">
+              <button type="button" id="pd-qty-minus">&minus;</button>
+              <span id="pd-qty-value">1</span>
+              <button type="button" id="pd-qty-plus">+</button>
+            </div>
+          </div>
+
+          <div class="pd-action-row">
+            <button id="product-modal-add-btn" class="pd-add-btn">Add to Cart</button>
+            <button id="product-modal-buy-btn" class="pd-buy-btn">Buy Now</button>
+            <button id="product-modal-share-btn" class="pd-icon-btn" aria-label="Share" title="Share">&#128257;</button>
+        </div>
+        </div>
+      </div>
+
+      <div class="pd-details">
+        <h3>Product Details</h3>
+        <p id="product-modal-description" class="pd-description"></p>
+      </div>
+
+      
+
+      <div class="pd-similar">
+        <h3>You May Also Like</h3>
+        <div id="pd-similar-grid" class="sf-product-grid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Cart Modal ===== -->
+  <div id="cart-modal" class="modal-overlay">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeCartModal()">&times;</button>
+      <h3>Your Cart</h3>
+      <p class="modal-sub">No online payment yet — send us your list and we'll confirm by phone.</p>
+
+      <div id="cart-items" class="cart-items"></div>
+      <p id="cart-empty" class="empty-state">Your cart is empty.</p>
+      <p id="cart-total" class="cart-total"></p>
+
+      <form id="cart-enquiry-form">
+        <input type="text" id="cart-name" placeholder="Your name" required>
+        <input type="tel" id="cart-phone" placeholder="Phone number" required>
+        <button type="submit" class="btn-primary full-width">Send Cart Enquiry</button>
+        <p id="cart-success" class="contact-success"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== Contact Modal ===== -->
+  <div id="contact-modal" class="modal-overlay">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeContactModal()">&times;</button>
+      <h3>Contact Us</h3>
+      <p class="modal-sub">Send us a message and we'll get back to you.</p>
+
+      <form id="contact-form">
+        <input type="text" id="contact-name" placeholder="Your name" required>
+        <input type="tel" id="contact-phone" placeholder="Phone number" required>
+        <input type="text" id="contact-product" placeholder="Product (optional)">
+        <textarea id="contact-message" rows="4" placeholder="Your message" required></textarea>
+        <button type="submit" class="btn-primary full-width">Send Message</button>
+        <p id="contact-success" class="contact-success"></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
+  <script>
+    const grid = document.getElementById("product-grid");
+    const emptyState = document.getElementById("empty-state");
+    
+
+  let currentSearchTerm = "";
+
+async function refreshStorefront(category = "All") {
+      if (currentSearchTerm) {
+        const results = await searchProducts(currentSearchTerm);
+        let filtered = results;
+        if (category !== "All") {
+          const categories = await getCategories();
+          const matchingIds = getDescendantCategoryIds(category, categories);
+          filtered = results.filter(
+            (p) => p.category === category || matchingIds.includes(p.category_id)
+          );
+        }
+        grid.innerHTML = "";
+        filtered.forEach((p) => grid.appendChild(buildProductCard(p)));
+        emptyState.style.display = filtered.length ? "none" : "block";
+      } else {
+        await renderStorefront(grid, emptyState, category);
+      }
+    }
+
+document.getElementById("search-btn").addEventListener("click", () => {
+  currentSearchTerm = document.getElementById("search-input").value;
+ refreshStorefront();
+});
+
+document.getElementById("search-input").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") document.getElementById("search-btn").click();
+});
+
+   (async () => {
+      await refreshStorefront();
+      updateCartCount();
+      applyStoreStatus();
+      initCategoryMenu();
+    })();
+
+    /* ---------------- Hamburger Category Menu ---------------- */
+    async function initCategoryMenu() {
+      const btn = document.getElementById("category-menu-btn");
+      const panel = document.getElementById("category-menu-panel");
+
+      const categories = await getCategories();
+      const tree = buildCategoryTree(categories);
+      const flat = flattenCategoryTree(tree);
+
+      panel.innerHTML = "";
+      flat.forEach((cat) => {
+        const item = document.createElement("button");
+        item.className = "category-menu-item";
+        item.style.paddingLeft = `${16 + cat.depth * 16}px`;
+        item.textContent = (cat.depth > 0 ? "↳ " : "") + cat.name;
+        item.addEventListener("click", () => {
+          currentSearchTerm = "";
+          document.getElementById("search-input").value = "";
+          refreshStorefront(cat.name);
+          panel.classList.remove("open");
+          document.getElementById("shop").scrollIntoView({ behavior: "smooth" });
+        });
+        panel.appendChild(item);
+      });
+
+      btn.addEventListener("click", () => panel.classList.toggle("open"));
+
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".category-menu-wrapper")) {
+          panel.classList.remove("open");
+        }
+      });
+    }
+/* ---------------- Product Detail Page ---------------- */
+    function buildPriceRow(product) {
+      const row = document.createElement("div");
+      row.className = "sf-price-row";
+
+      const price = document.createElement("span");
+      price.className = "sf-product-price";
+      price.textContent = formatPrice(product.price);
+      row.appendChild(price);
+
+      if (product.discount_percent > 0 && product.original_price > product.price) {
+        const original = document.createElement("span");
+        original.className = "sf-original-price";
+        original.textContent = formatPrice(product.original_price);
+        row.appendChild(original);
+
+        const badge = document.createElement("span");
+        badge.className = "sf-discount-badge";
+        badge.textContent = `${product.discount_percent}% off`;
+        row.appendChild(badge);
+      }
+      return row;
+    }
+
+    async function openProductModal(product) {
+      document.getElementById("product-modal-name").textContent = product.name;
+      document.getElementById("product-modal-category").textContent = product.category;
+      document.getElementById("product-modal-description").textContent =
+        product.description || "No description provided.";
+
+      const priceRowEl = document.getElementById("product-modal-price-row");
+      priceRowEl.innerHTML = "";
+      priceRowEl.appendChild(buildPriceRow(product));
+
+      // Gallery: use images[] if present, otherwise fall back to single image_url
+      const images = product.images && product.images.length ? product.images : (product.image_url ? [product.image_url] : []);
+      const mainImg = document.getElementById("pd-main-image");
+      const thumbsEl = document.getElementById("pd-thumbnails");
+      thumbsEl.innerHTML = "";
+
+      function setMainImage(url) {
+        if (url) {
+          mainImg.style.backgroundImage = `url('${url}')`;
+          mainImg.classList.remove("no-image");
+          mainImg.textContent = "";
+        } else {
+          mainImg.style.backgroundImage = "none";
+          mainImg.classList.add("no-image");
+          mainImg.textContent = "No Image";
+        }
+      }
+
+      setMainImage(images[0]);
+
+      images.forEach((url, i) => {
+        const thumb = document.createElement("div");
+        thumb.className = "pd-thumb" + (i === 0 ? " active" : "");
+        thumb.style.backgroundImage = `url('${url}')`;
+        thumb.addEventListener("click", () => {
+          setMainImage(url);
+          thumbsEl.querySelectorAll(".pd-thumb").forEach((t) => t.classList.remove("active"));
+          thumb.classList.add("active");
+        });
+        thumbsEl.appendChild(thumb);
+      });
+
+   // Quantity stepper
+      let pdCurrentQty = 1;
+      document.getElementById("pd-qty-value").textContent = pdCurrentQty;
+
+      document.getElementById("pd-qty-minus").onclick = () => {
+        if (pdCurrentQty > 1) pdCurrentQty--;
+        document.getElementById("pd-qty-value").textContent = pdCurrentQty;
+      };
+      document.getElementById("pd-qty-plus").onclick = () => {
+        pdCurrentQty++;
+        document.getElementById("pd-qty-value").textContent = pdCurrentQty;
+      };
+
+      const addBtn = document.getElementById("product-modal-add-btn");
+      addBtn.onclick = () => {
+        for (let i = 0; i < pdCurrentQty; i++) addToCart(product);
+        updateCartCount();
+        addBtn.textContent = "Added ✓";
+        setTimeout(() => (addBtn.textContent = "Add to Cart"), 1200);
+      };
+
+      const buyBtn = document.getElementById("product-modal-buy-btn");
+      buyBtn.onclick = () => {
+        for (let i = 0; i < pdCurrentQty; i++) addToCart(product);
+        updateCartCount();
+        closeProductModal();
+        openCartModal();
+      };
+
+      const shareBtn = document.getElementById("product-modal-share-btn");
+      shareBtn.onclick = async () => {
+        const shareData = {
+          title: product.name,
+          text: `Check out ${product.name} on Sarah Fashions`,
+          url: window.location.href
+        };
+        if (navigator.share) {
+          navigator.share(shareData).catch(() => {});
+        } else {
+          await navigator.clipboard.writeText(window.location.href);
+          shareBtn.textContent = "Copied!";
+          setTimeout(() => (shareBtn.innerHTML = "&#128257;"), 1500);
+        }
+      };
+
+      
+
+      // "You May Also Like" — same category, excluding this product
+      const allProducts = await getProducts();
+      const similar = allProducts.filter((p) => p.category === product.category && p.id !== product.id).slice(0, 4);
+      const similarGrid = document.getElementById("pd-similar-grid");
+      similarGrid.innerHTML = "";
+      similar.forEach((p) => similarGrid.appendChild(buildProductCard(p)));
+      document.querySelector(".pd-similar").style.display = similar.length ? "block" : "none";
+
+      document.getElementById("product-modal").classList.add("open");
+      document.querySelector(".pd-page").scrollTop = 0;
+    }
+
+    function closeProductModal() {
+      document.getElementById("product-modal").classList.remove("open");
+    }
+
+    /* ---------------- Cart Modal ---------------- */
+    function updateCartCount() {
+      document.getElementById("cart-count").textContent = getCartCount();
+    }
+
+    function renderCartModal() {
+      const cart = getCart();
+      const itemsEl = document.getElementById("cart-items");
+      const emptyEl = document.getElementById("cart-empty");
+      const totalEl = document.getElementById("cart-total");
+
+      itemsEl.innerHTML = "";
+      cart.forEach((item) => {
+        const row = document.createElement("div");
+        row.className = "cart-row";
+        row.innerHTML = `
+          <span>${item.qty} &times; ${item.name}</span>
+          <span>${formatPrice(item.qty * item.price)}</span>
+        `;
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "Remove";
+        removeBtn.className = "cart-remove-btn";
+        removeBtn.addEventListener("click", () => {
+          removeFromCart(item.id);
+          renderCartModal();
+          updateCartCount();
+        });
+        row.appendChild(removeBtn);
+        itemsEl.appendChild(row);
+      });
+
+      emptyEl.style.display = cart.length ? "none" : "block";
+      const total = cart.reduce((sum, i) => sum + i.qty * i.price, 0);
+      totalEl.textContent = cart.length ? `Total: ${formatPrice(total)}` : "";
+    }
+
+    function openCartModal() {
+      renderCartModal();
+      document.getElementById("cart-modal").classList.add("open");
+    }
+
+    function closeCartModal() {
+      document.getElementById("cart-modal").classList.remove("open");
+    }
+
+    document.getElementById("cart-modal").addEventListener("click", (e) => {
+      if (e.target.id === "cart-modal") closeCartModal();
+    });
+
+    document.getElementById("cart-enquiry-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("cart-name").value;
+      const phone = document.getElementById("cart-phone").value;
+
+      await sendCartEnquiry({ name, phone });
+      updateCartCount();
+      renderCartModal();
+
+      document.getElementById("cart-success").textContent = "Sent! We'll call you to confirm.";
+      e.target.reset();
+      setTimeout(() => {
+        closeCartModal();
+        document.getElementById("cart-success").textContent = "";
+      }, 1800);
+    });
+
+    /* ---------------- Contact Modal ---------------- */
+    document.getElementById("contact-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("contact-name").value;
+      const phone = document.getElementById("contact-phone").value;
+      const product = document.getElementById("contact-product").value;
+      const message = document.getElementById("contact-message").value;
+
+      await addMessage({ name, phone, product, message });
+
+      document.getElementById("contact-success").textContent =
+        "Thanks! Your message has been sent.";
+      e.target.reset();
+
+      setTimeout(() => {
+        closeContactModal();
+        document.getElementById("contact-success").textContent = "";
+      }, 1800);
+    });
+
+    document.getElementById("contact-modal").addEventListener("click", (e) => {
+      if (e.target.id === "contact-modal") closeContactModal();
+    });
+  </script>
+
+</body>
+</html>
