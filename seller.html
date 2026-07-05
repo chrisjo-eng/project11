@@ -84,7 +84,12 @@
 
           <div class="form-row">
             <label for="product-description">Description <span class="optional">(optional)</span></label>
-          <textarea id="product-description" rows="3" placeholder="Short description customers will see..."></textarea>
+            <textarea id="product-description" rows="3" placeholder="Short description customers will see..."></textarea>
+          </div>
+
+          <div class="form-row">
+            <label for="product-stock">Stock Quantity <span class="optional">(optional — leave blank if unlimited)</span></label>
+            <input type="number" id="product-stock" placeholder="e.g. 10" min="0">
           </div>
 
           <button type="submit" class="btn-primary" id="add-product-btn">Add Product</button>
