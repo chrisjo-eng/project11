@@ -413,7 +413,7 @@ a {
 /* ===== Product Grid ===== */
 .sf-product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
@@ -1494,5 +1494,9 @@ a {
   }
   .dashboard-main {
     padding: 20px;
+  }
+   .sf-product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
   }
 }
