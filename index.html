@@ -339,8 +339,22 @@ document.getElementById("search-input").addEventListener("keydown", (e) => {
         product.description || "No description provided.";
 
       const priceRowEl = document.getElementById("product-modal-price-row");
+      const stockEl = document.getElementById("pd-stock-status");
+      if (product.stock === null || product.stock === undefined) {
+        stockEl.textContent = "";
+      } else if (product.stock <= 0) {
+        stockEl.textContent = "Out of Stock";
+        stockEl.className = "pd-stock-status out";
+      } else if (product.stock <= 5) {
+        stockEl.textContent = `Only ${product.stock} left in stock!`;
+        stockEl.className = "pd-stock-status low";
+      } else {
+        stockEl.textContent = `${product.stock} in stock`;
+        stockEl.className = "pd-stock-status ok";
+      }
       priceRowEl.innerHTML = "";
       priceRowEl.appendChild(buildPriceRow(product));
+      
 
       // Gallery: use images[] if present, otherwise fall back to single image_url
       const images = product.images && product.images.length ? product.images : (product.image_url ? [product.image_url] : []);
@@ -386,8 +400,10 @@ document.getElementById("search-input").addEventListener("keydown", (e) => {
         pdCurrentQty++;
         document.getElementById("pd-qty-value").textContent = pdCurrentQty;
       };
-
+      
+const outOfStock = product.stock !== null && product.stock !== undefined && product.stock <= 0;
       const addBtn = document.getElementById("product-modal-add-btn");
+      addBtn.disabled = outOfStock;
       addBtn.onclick = () => {
         for (let i = 0; i < pdCurrentQty; i++) addToCart(product);
         updateCartCount();
@@ -398,6 +414,7 @@ document.getElementById("search-input").addEventListener("keydown", (e) => {
       const buyBtn = document.getElementById("product-modal-buy-btn");
       buyBtn.onclick = () => {
         for (let i = 0; i < pdCurrentQty; i++) addToCart(product);
+        buyBtn.disabled = outOfStock;
         updateCartCount();
         closeProductModal();
         openCartModal();
