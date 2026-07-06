@@ -340,6 +340,7 @@ function addToCart(product) {
   saveCart(cart);
 }
 
+
 function removeFromCart(id) {
   saveCart(getCart().filter((item) => item.id !== id));
 }
