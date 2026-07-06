@@ -885,7 +885,29 @@ a {
   position: relative;
   top: -3px;
 }
+.pd-stock-status {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
 
+.pd-stock-status.ok {
+  color: #2fa365;
+}
+
+.pd-stock-status.low {
+  color: #e0342e;
+}
+
+.pd-stock-status.out {
+  color: #999;
+}
+
+.pd-add-btn:disabled,
+.pd-buy-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 .pd-delivery-row {
   display: flex;
   align-items: center;
