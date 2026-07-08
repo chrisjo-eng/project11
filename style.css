@@ -110,9 +110,9 @@ a {
 
 .category-menu-panel {
   display: none;
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
+  position: fixed;
+  top: 90px;
+  left: 32px;
   min-width: 220px;
   max-height: 400px;
   overflow-y: auto;
@@ -242,6 +242,29 @@ a {
 
 .seller-btn:hover {
   background: #a67a3a;
+}
+
+.message-btn {
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+}
+
+.message-btn:hover {
+  background: #f5f5f5;
+}
+
+.message-btn .btn-label {
+  white-space: nowrap;
 }
 
 .cart-btn {
@@ -1227,7 +1250,6 @@ a {
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
   }
-}
 
 .dashboard-header h1 {
   font-family: 'Poppins', sans-serif;
@@ -1503,22 +1525,102 @@ a {
 @media (max-width: 700px) {
   .hero-title {
     font-size: 42px;
+    }
+    body {
+    padding-bottom: 64px;
+  
+  }
+  .pd-page {
+    padding-bottom: 90px;
   }
   .navbar {
     flex-wrap: wrap;
-    gap: 10px;
-  }
-  .dashboard-wrapper {
-    flex-direction: column;
-  }
-  .dashboard-sidebar {
-    width: 100%;
-  }
-  .dashboard-main {
-    padding: 20px;
-  }
-   .sf-product-grid {
-    grid-template-columns: repeat(2, 1fr);
     gap: 8px;
+    row-gap: 10px;
+  }
+  .logo {
+    order: 1;
+  }
+  .search-bar {
+    order: 2;
+    flex: 1 1 auto;
+  }
+  .status-pill {
+    order: 3;
+    font-size: 9px;
+    padding: 3px 8px;
+    gap: 3px;
+    margin: 0 auto;
+  }
+
+  /* ===== Bottom action bar (mobile only) =====
+     These are the SAME .category-menu-wrapper and .nav-right elements
+     from the top navbar — not duplicates. On mobile we just visually
+     relocate them to the bottom of the screen with position: fixed.
+     Their existing click handlers (category-menu-btn, cart-btn,
+     seller-btn, message-btn) keep working untouched. */
+  .category-menu-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 25%;
+    height: 60px;
+    z-index: 500;
+    background: var(--bg-darker);
+    border-top: 1px solid var(--border-soft);
+    display: flex;
+    align-items: stretch;
+  }
+
+  .category-menu-btn {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 0;
+    font-size: 10px;
+    line-height: 1.2;
+    white-space: normal;
+  }
+
+  .nav-right {
+    position: fixed;
+    bottom: 0;
+    left: 25%;
+    right: 0;
+    height: 60px;
+    z-index: 500;
+    background: var(--bg-darker);
+    border-top: 1px solid var(--border-soft);
+    justify-content: space-around;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .message-btn,
+  .cart-btn,
+  .seller-btn {
+    flex: 1;
+    height: 100%;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    font-size: 10px;
+    padding: 4px;
+  }
+
+  .cart-count {
+    position: static;
+    margin-top: 1px;
+  }
+
+  .category-menu-panel {
+    position: fixed;
+    bottom: 60px;
+    left: 10px;
+    right: 10px;
+    top: auto;
   }
 }
