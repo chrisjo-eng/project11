@@ -3,7 +3,7 @@
    ============================================================ */
 
 /* ---- FILL THESE IN from Supabase → Project Settings → API ---- */
-const SUPABASE_URL = "https://beeziwxvuteerudthmlp.supabase.co";
+/*const SUPABASE_URL = "https://beeziwxvuteerudthmlp.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_icvBPjTLOKL63Nj2TzZkZA_D6RTfqr8";
 /* ---------------------------------------------------------------- */
 
